@@ -1,50 +1,45 @@
-# Welcome to your Expo app 👋
+### `services/`
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**역할**
 
-## Get started
+- `services` 디렉토리는 UI와 직접 연결되지 않는 **핵심 로직과 데이터 관리**를 담당
 
-1. Install dependencies
+**주요 기능**
 
-   ```bash
-   npm install
-   ```
+- **API 호출**: 서버 통신 처리
+- **데이터 가공**: API 응답 데이터를 사용하기 적합한 형태로 변환
+- **비즈니스 로직**: 특정 도메인의 작업 흐름 처리
+- **상태 관리**
+- **공통 유틸 함수**
 
-2. Start the app
+**_services 디렉토리 구조 예시_**
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+services/
+  ├── api.ts           // API 호출 함수 (fetch, post 등)
+  ├── store.ts         // 상태 관리
+  ├── hooks.ts         // 커스텀 훅
+  └── utils.ts         // 공통 유틸 함수
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- `api.ts`: API 호출 함수 모음.
+- `auth.ts`: 로그인 및 인증 관련 로직.
+- `dataProcessor.ts`: 데이터 변환 및 가공.
+- `state.ts`: 상태 관리 로직.
+- `utils.ts`: 공통 유틸 함수.
 
-## Learn more
+<br>
 
-To learn more about developing your project with Expo, look at the following resources:
+### `widget`
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+특정 페이지 혹은 화면에서 자주 사용되는 UI 단위
 
-## Join the community
+Q. shared/components에 공통 컴포넌트를 추가할 때, 재사용성 판단 기준?
 
-Join our community of developers creating universal apps.
+1. 재사용 빈도:
+   • 두 개 이상의 Feature 또는 페이지에서 반복적으로 사용될 가능성이 있는 경우, `shared/` 로 분리
+   • 예: 버튼, 입력 필드, 카드 컴포넌트 등.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+2. 역할의 독립성:
+   • 특정 Feature에 의존하지 않고, 일반적인 역할을 수행하는 컴포넌트라면 `shared/`에 배치
+   • 예: Modal, Dropdown, Snackbar.
