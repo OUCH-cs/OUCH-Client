@@ -1,1 +1,1 @@
-// centeral import file
+export * from "./navigations";
