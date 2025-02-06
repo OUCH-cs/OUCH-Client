@@ -9,7 +9,7 @@ export default function HomeScreen() {
     <SafeAreaView>
       <Text>Home</Text>
       <Text>Home</Text>
-      <Link href={"/login"}>Navigate to Login</Link>
+      <Link href={"/sign-in"}>Navigate to Login</Link>
       <Button
         title="Logout"
         onPress={() => {
