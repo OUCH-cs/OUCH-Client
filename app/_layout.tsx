@@ -3,15 +3,22 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
-import RootNavigator from "@/shared/components/auth/RootNavigator";
+import { ThemeProvider } from "@/shared/config";
+import { setCustomText } from "react-native-global-props";
+import { customTextProps } from "@/shared/config/customFont";
+import { RootNavigator } from "@/shared/components";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    PretendardRegular: require("@/assets/fonts/Pretendard-Regular.ttf"),
+    PretendardMedium: require("@/assets/fonts/Pretendard-Medium.ttf"),
+    PretendardSemiBold: require("@/assets/fonts/Pretendard-SemiBold.ttf"),
   });
+
+  setCustomText(customTextProps);
 
   useEffect(() => {
     if (loaded) {
@@ -25,10 +32,10 @@ export default function RootLayout() {
 
   return (
     <>
-      {/*  <ThemeProvider value={Theme}> */}
-      <RootNavigator />
-      <StatusBar style="auto" />
-      {/* </ThemeProvider> */}
+      <ThemeProvider>
+        <RootNavigator />
+        <StatusBar style="auto" />
+      </ThemeProvider>
     </>
   );
 }
