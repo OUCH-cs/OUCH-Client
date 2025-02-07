@@ -1,40 +1,57 @@
 import { Tabs } from "expo-router";
-// import HomeIcon from "@/assets/icons/home-unactive.svg";
-// import SearchIcon from "../assets/icons/search-unactive.svg";
+import TabHome from "@/assets/icons/tabs/TabHome";
+import theme from "@/shared/styles/theme";
+import TabSearch from "@/assets/icons/tabs/TabSearch";
+import TabTranslate from "@/assets/icons/tabs/TabTranslate";
+import TabRecords from "@/assets/icons/tabs/TabRecords";
+import TabMypage from "@/assets/icons/tabs/TabMypage";
+import { Platform } from "react-native";
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: theme.colors.primary,
+        tabBarInactiveTintColor: "#354A4D",
+        tabBarStyle: {
+          height: Platform.OS === "ios" ? 68 : 52,
+          paddingTop: 5,
+          paddingHorizontal: 25,
+          backgroundColor: "#FBFDFF",
+          boxShadow: "2px 0 2px rgba(0, 0, 0, 0.08)",
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          // tabBarIcon: ({ color }) => <HomeIcon size={28} color={color} />,
+          tabBarIcon: ({ color }) => <TabHome color={color} />,
         }}
       />
       <Tabs.Screen
         name="search"
         options={{
-          title: "Search",
-          // tabBarIcon: ({ color }) => <SearchIcon size={28} color={color} />,
+          tabBarIcon: ({ color }) => <TabSearch color={color} />,
         }}
       />
       <Tabs.Screen
-        name="translation"
+        name="translate"
         options={{
-          title: "Translation",
+          tabBarIcon: ({ color }) => <TabTranslate color={color} />,
         }}
       />
       <Tabs.Screen
         name="records"
         options={{
-          title: "Records",
+          tabBarIcon: ({ color }) => <TabRecords color={color} />,
         }}
       />
       <Tabs.Screen
         name="mypage"
         options={{
-          title: "Mypage",
+          tabBarIcon: ({ color }) => <TabMypage color={color} />,
         }}
       />
     </Tabs>
