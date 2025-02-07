@@ -8,7 +8,14 @@
 app/                          # expo 라우팅
 ├── (auth)                    # 인증 라우트 그룹
 ├── (tabs)                    # 탭바 라우트 그룹
+│   ├── mypage/               # 마이 페이지
+│   ├── records/              # 의료 기록 페이지
+│   ├── search/               # 검색 페이지
+│   ├── translate/            # 통역 페이지
+│   ├── _layout.tsx/          # 통역 layout
+│   ├── index.tsx/            # 메인 페이지
 ├── _layout.tsx/              # RootLayout
+├── diagnosis/                # 자가진단 페이지
 ├── +not-found.tsx/           # 404 Not found page
 
 assets/                       # 정적 이미지 소스 관리
@@ -33,6 +40,7 @@ shared/                       # 재사용 가능한 전역 리소스
 ├── lib/                      # 공용 유틸함수 및 커스텀 훅
 │   ├── utils/                # 유틸함수
 │   └── hooks/                # 커스텀 훅
+├── services/                 # 전역 API, 상태관리, 비즈니스 로직
 ├── styles/                   # 전역 스타일 관리
 └── types/                    # 전역 타입
 
@@ -69,6 +77,8 @@ shared/                       # 재사용 가능한 전역 리소스
 
 <br>
 <br>
+
+## Layer
 
 **Layer 기본 원칙**
 
@@ -167,7 +177,7 @@ export function LoginForm() {
 | **features/ui**       | 특정 Feature에 종속된 UI 컴포넌트     | Feature 내부               | 중간                                                |
 | **shared/components** | 전역적으로 재사용 가능한 기본 UI 요소 | 앱 전체                    | 가장 낮음                                           |
 
-- 프로젝트 규모 및 코드 구조의 복잡성 등의 고려하여 FSD Layer 중 `widgets`와 `entities`는 채택하지 않음
+- 프로젝트 규모 및 코드 구조의 복잡성 등을 고려하여 FSD Layer 중 `widgets`와 `entities`는 채택하지 않음
 
 <br>
 
