@@ -1,19 +1,23 @@
 import { useAuthStore } from "@/features/auth/services/authStore";
 import { Link } from "expo-router";
-import { StyleSheet, Text, SafeAreaView, Button } from "react-native";
+import { StyleSheet, Text, SafeAreaView, Button, View } from "react-native";
 
 export default function HomeScreen() {
-  const logout = useAuthStore((state) => state.logout);
+  const isSignedIn = useAuthStore((state) => state.isSignedIn);
+  const signOut = useAuthStore((state) => state.signOut);
+
+  console.log(isSignedIn);
 
   return (
     <SafeAreaView>
       <Text>Home</Text>
       <Text>Home</Text>
       <Link href={"/sign-in"}>Navigate to Login</Link>
+      <Link href={"/diagnosis"}>Navigate to 자가진단</Link>
       <Button
-        title="Logout"
+        title="signOut"
         onPress={() => {
-          logout();
+          signOut();
         }}
       />
     </SafeAreaView>

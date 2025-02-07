@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 
-export default function MyPageScreen() {
+export default function TranslateScreen() {
   return (
     <SafeAreaView>
-      <Text>MyPage</Text>
+      <Text>Translation</Text>
     </SafeAreaView>
   );
 }

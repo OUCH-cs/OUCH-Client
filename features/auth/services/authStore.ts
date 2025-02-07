@@ -1,15 +1,15 @@
 import { create } from "zustand";
 
 type AuthState = {
-  isLoggedIn: boolean;
-  login: () => void;
-  logout: () => void;
+  isSignedIn: boolean;
+  signIn: () => void;
+  signOut: () => void;
 };
 
 const useAuthStore = create<AuthState>((set) => ({
-  isLoggedIn: false,
-  login: () => set({ isLoggedIn: true }),
-  logout: () => set({ isLoggedIn: false }),
+  isSignedIn: false,
+  signIn: () => set({ isSignedIn: true }),
+  signOut: () => set({ isSignedIn: false }),
 }));
 
 export { useAuthStore };

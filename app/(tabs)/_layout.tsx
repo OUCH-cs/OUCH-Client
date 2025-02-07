@@ -31,25 +31,25 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="search"
+        name="search/index"
         options={{
           tabBarIcon: ({ color }) => <TabSearch color={color} />,
         }}
       />
       <Tabs.Screen
-        name="translate"
+        name="translate/index"
         options={{
           tabBarIcon: ({ color }) => <TabTranslate color={color} />,
         }}
       />
       <Tabs.Screen
-        name="records"
+        name="records/index"
         options={{
           tabBarIcon: ({ color }) => <TabRecords color={color} />,
         }}
       />
       <Tabs.Screen
-        name="mypage"
+        name="mypage/index"
         options={{
           tabBarIcon: ({ color }) => <TabMypage color={color} />,
         }}

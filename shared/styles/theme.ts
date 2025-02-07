@@ -17,7 +17,7 @@ type ThemeType = {
   };
 };
 
-const Theme: ThemeType = {
+const theme: ThemeType = {
   colors: {
     primary: "#0097A7",
     background: "#F5F9FC",
@@ -38,4 +38,4 @@ const Theme: ThemeType = {
   },
 };
 
-export default Theme;
+export default theme;
