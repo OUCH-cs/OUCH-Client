@@ -4,6 +4,7 @@ type ThemeType = {
     background: string;
     secondary: string;
     tertiary: string;
+    red: string;
     white: string;
     white_f8: string;
     white_f1: string;
@@ -23,6 +24,7 @@ const theme: ThemeType = {
     background: "#F5F9FC",
     secondary: "#B9D6D9",
     tertiary: "#E3F5F6",
+    red: "DC0000",
 
     white: "#FFFFFF",
     white_f8: "#F8F8F8",
