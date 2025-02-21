@@ -1,3 +1,10 @@
+import { Label } from "@/shared/components/label/Label";
+import { SafeAreaView } from "react-native";
+
 export default function ForgotPWScreen() {
-  return <div>Forgot PW</div>;
+  return (
+    <SafeAreaView>
+      <Label>Forgot PW</Label>
+    </SafeAreaView>
+  );
 }

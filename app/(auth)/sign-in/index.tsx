@@ -43,9 +43,15 @@ export default function SignInScreen() {
         </CustomButton>
       </View>
 
-      <Link href={"/forgot/id"} style={styles.forgotLabel}>
-        Forgot ID/PW
-      </Link>
+      <View style={styles.forgotLabelWrapper}>
+        <Link href={"/forgot/id"} style={styles.forgotLabel}>
+          Forgot ID
+        </Link>
+        <Label style={styles.forgotLabel}>|</Label>
+        <Link href={"/forgot/pw"} style={styles.forgotLabel}>
+          Forgot PW
+        </Link>
+      </View>
 
       <View style={styles.signUpNavWrapper}>
         <Label style={[styles.signUpNavLabel, styles.guide]}>
@@ -90,8 +96,13 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
 
-  forgotLabel: {
+  forgotLabelWrapper: {
+    flexDirection: "row",
+    gap: 8,
     marginBottom: 86,
+  },
+
+  forgotLabel: {
     fontSize: 14,
     fontWeight: 400,
     color: theme.colors.gray_7,
