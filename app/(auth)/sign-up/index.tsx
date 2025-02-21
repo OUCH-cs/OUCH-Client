@@ -1,20 +1,56 @@
-import { Text, SafeAreaView, Button } from "react-native";
-import { Link } from "expo-router";
+import { SafeAreaView, StyleSheet } from "react-native";
+import theme from "@/shared/styles/theme";
+import InputField from "@/shared/components/input-field/InputField";
+import { useEffect, useState } from "react";
+import {
+  useSignUpDataStore,
+  useSignUpStatusStore,
+} from "@/features/auth/services/authStore";
+import { SelectGender, SignUpForm } from "@/features/auth/ui";
+import { ISignUpData } from "@/features/auth/types";
+import { useSignUpState } from "@/features/auth/services/useSignUpState";
 
 export default function SignUp() {
-  const serverHealthCheck = async () => {
-    const res = await fetch("http://52.78.221.55:8080/health");
-    // const data = await res.json();
-    console.log(res.json());
-    console.log("api 요청 완료");
+  const signUpStatus = useSignUpStatusStore((state) => state.signUpStatus);
+  const signUpData = useSignUpDataStore((state) => state.signUpData);
+  const { handleSignUpState } = useSignUpState();
+  const [isValid, setIsValid] = useState<boolean>(false);
+
+  const handleTextChange = (name: keyof ISignUpData, text: string) => {
+    text.length > 0 ? setIsValid(true) : setIsValid(false);
+    handleSignUpState(name, text);
   };
 
-  return (
-    <SafeAreaView>
-      <Text>SignUp</Text>
-      <Link href="/sign-in">로그인으로 이동</Link>
+  useEffect(() => {}, []);
 
-      <Button title="api 요청" onPress={serverHealthCheck} />
+  return (
+    <SafeAreaView style={styles.container}>
+      {/* 이름 */}
+      {signUpStatus === 0 && (
+        <SignUpForm title="Enter Your Name" isValid={isValid}>
+          <InputField
+            placeholder="YUJIN"
+            name="name"
+            value={signUpData.name}
+            autoFocus
+            onChangeText={(text) => handleTextChange("name", text)}
+          />
+        </SignUpForm>
+      )}
+
+      {/* 성별 */}
+      {signUpStatus === 1 && (
+        <SignUpForm title="Select Your Gender" isValid={isValid}>
+          <SelectGender />
+        </SignUpForm>
+      )}
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
+  },
+});
