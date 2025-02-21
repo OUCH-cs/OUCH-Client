@@ -1,10 +1,6 @@
 import { create } from "zustand";
-
-type AuthState = {
-  isSignedIn: boolean;
-  signIn: () => void;
-  signOut: () => void;
-};
+import { AuthState, ISignUpData, SignUpState, SignUpStatus } from "../types";
+import { initialSignUpData } from "../consts/sign-up";
 
 const useAuthStore = create<AuthState>((set) => ({
   isSignedIn: false,
@@ -12,4 +8,16 @@ const useAuthStore = create<AuthState>((set) => ({
   signOut: () => set({ isSignedIn: false }),
 }));
 
-export { useAuthStore };
+const useSignUpStatusStore = create<SignUpStatus>((set) => ({
+  signUpStatus: 0,
+  setSignUpStatus: (status) => set({ signUpStatus: status }),
+}));
+
+const useSignUpDataStore = create<SignUpState>((set) => ({
+  signUpData: initialSignUpData,
+  setSignUpData: (data: Partial<ISignUpData>) =>
+    set((state) => ({
+      signUpData: { ...state.signUpData, ...data },
+    })),
+}));
+export { useAuthStore, useSignUpStatusStore, useSignUpDataStore };
