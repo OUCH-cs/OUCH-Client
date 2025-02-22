@@ -4,6 +4,7 @@ import { TextInputProps, Pressable, TextInput, StyleSheet } from "react-native";
 import { Label } from "../label/Label";
 
 interface InputFieldProps extends TextInputProps {
+  name?: string;
   disabled?: boolean;
   error?: string;
   touched?: boolean;
@@ -32,6 +33,7 @@ export default function InputField({
         placeholderTextColor={theme.colors.gray_7}
         autoCapitalize="none"
         spellCheck={false}
+        style={styles.input}
         {...props}
       />
       {touched && Boolean(error) && (
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    fontSize: 20,
+    fontSize: 16,
     color: theme.colors.black,
     fontWeight: 400,
   },
