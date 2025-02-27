@@ -1,5 +1,5 @@
 import React from "react";
-import Svg, { Path, Image, SvgProps } from "react-native-svg";
+import Svg, { Image, SvgProps } from "react-native-svg";
 
 interface SvgComponentProps extends SvgProps {}
 

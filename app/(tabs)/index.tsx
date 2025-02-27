@@ -1,8 +1,7 @@
 import { useAuthStore } from "@/features/auth/services/authStore";
-import { View, FlatList, Pressable, StyleSheet} from "react-native";
+import { View, FlatList, Pressable, StyleSheet, Platform} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Label } from "@/shared/components/label/Label";
-import { Ionicons } from "@expo/vector-icons";
 import theme from "@/shared/styles/theme";
 import HomeDiagnosis from "@/assets/icons/home/HomeDiagnosis";
 import HomeCamera from "@/assets/icons/home/HomeCamera";
@@ -36,14 +35,14 @@ export default function HomeScreen() {
         <Label style={styles.language}>ENG</Label>
       </View>
       <Pressable style={styles.diagnosisContainer} onPress={() => router.push("/diagnosis")}>
-        <HomeDiagnosis style={styles.homeIcon}/>
+        <HomeDiagnosis style={styles.homeIcon} />
         <Label style={styles.cardText}>
           Let’s fill out the <Label style={{color: theme.colors.primary}}>self-diagnosis form</Label> to explain your disease!
         </Label>
       </Pressable>
       <View style={styles.buttonContainer}>
         <Pressable style={styles.button}>
-          <HomeCamera style={styles.buttonIcon}/>
+          <HomeCamera style={styles.buttonIcon} />
           <Label style={styles.buttonText}>Text translation</Label>
         </Pressable>
         <Pressable style={[styles.button, styles.selectedButton]} onPress={() => {}}>
@@ -146,7 +145,7 @@ const styles = StyleSheet.create({
     height: height * 0.15,
     backgroundColor: theme.colors.white,
     borderRadius: 20,
-    paddingVertical:42,
+    paddingVertical: Platform.select({ ios: 42, android: 47 }),
     alignItems: "center",
     shadowColor: theme.colors.black,
     shadowOffset: { width: 0, height: 2 },

@@ -4,7 +4,13 @@ import Svg, { G, Path, Defs, ClipPath, SvgProps } from "react-native-svg";
 interface SvgComponentProps extends SvgProps {}
 
 const HomeGuide: React.FC<SvgComponentProps> = (props) => (
-  <Svg width={28} height={28} fill="none" {...props}>
+  <Svg 
+    width={29}
+    height={28}
+    viewBox="0 0 26 26"
+    fill="none"
+    {...props}
+  >
     <G clipPath="url(#a)">
       <Path
         fill="#0097A7"

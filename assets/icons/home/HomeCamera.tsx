@@ -5,8 +5,9 @@ interface SvgComponentProps extends SvgProps {}
 
 const HomeCamera: React.FC<SvgComponentProps> = (props) => (
   <Svg
-    width={26}
-    height={24}
+    width={29}
+    height={29}
+    viewBox="0 0 26 26"
     fill="none"
     {...props}
   >
