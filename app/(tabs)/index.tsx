@@ -74,7 +74,6 @@ export default function HomeScreen() {
           />
         </>   
       </>
-      
     </SafeAreaView>
   );
 }
@@ -127,8 +126,6 @@ const styles = StyleSheet.create({
   },
 
   homeIcon: {
-    width: 65,
-    height: 65,
     marginBottom: 6,
   },
 
