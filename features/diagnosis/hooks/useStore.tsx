@@ -8,10 +8,8 @@ type State = {
   addSymptom: (symptom: string) => void;
   removeSymptom: (symptom: string) => void;
 
-
   duration: string | null;
   setDuration: (value: string) => void;
-
 
   painLevel: number;
   setPainLevel: (value: number) => void;
@@ -35,7 +33,6 @@ export const useStore = create<State>((set) => ({
       selectedSymptoms: state.selectedSymptoms.filter((s) => s !== symptom),
     })),
 
-
   duration: null,
   setDuration: (value) => set({ duration: value }),
 
@@ -44,7 +41,4 @@ export const useStore = create<State>((set) => ({
 
   additionalNotes: '',
   setAdditionalNotes: (text) => set({ additionalNotes: text }),
-
-
-  
 }));

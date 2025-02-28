@@ -1,4 +1,3 @@
-import React from "react";
 import { View, Text, Button, Pressable, StyleSheet, FlatList } from "react-native";
 import { useRouter } from 'expo-router';
 import Collapsible from "react-native-collapsible";
@@ -8,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Label } from "@/shared/components/label/Label";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/shared/components/button/CustomButton";
+import { FAQ_DATA } from "@/shared/mocks/data";
 
 export default function DiagnosisScreen() {
   const router = useRouter();
@@ -17,27 +17,11 @@ export default function DiagnosisScreen() {
     setOpenId(openId === id ? null : id);
   };
 
-  const FAQ_DATA = [
-    {
-      id: "1",
-      question: "What is a Self-diagnosis form?",
-      answer: "A simple way to record your symptoms and health concerns in advance, making it easier to communicate with your doctor or pharmacist ",
-    },
-    {
-      id: "2",
-      question: "How it works?",
-      answer: `1. Choose your destination\n2. Select your symptoms\n3. Indicate how long you've had these symptoms\n4. Rate the severity of your discomfort\n5. Add any additional concerns you'd like to share with the healthcare provider`,
-    },
-    {
-      id: "3",
-      question: "Benefits",
-      answer: `Reduce communication barriers with your healthcare provider\n\nSave time during your visit\n\nEnsure important symptoms aren’t missed\n\nGet more accurate medical recommendations`,
-    },
-  ];
-
   return (
     <SafeAreaView style={styles.container}>
+      {/*헤더는 임시.*/}
       <Label style={styles.header}>Self-diagnosis</Label>
+      {/*드롭다운 공통 컴포넌트 구현 후 수정 예정*/}
       <FlatList
         data={FAQ_DATA}
         keyExtractor={(item) => item.id}
@@ -55,8 +39,7 @@ export default function DiagnosisScreen() {
             </Collapsible>
           </View>
         )}
-        
-        ListFooterComponent={ // ⬅ 마지막 카드 아래에 버튼 추가!
+        ListFooterComponent={ 
           <CustomButton style={styles.nextButton} onPress={()=> {}}>
             <Text style={styles.nextButtonText}>Next</Text>
           </CustomButton>
@@ -67,7 +50,6 @@ export default function DiagnosisScreen() {
     </SafeAreaView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
