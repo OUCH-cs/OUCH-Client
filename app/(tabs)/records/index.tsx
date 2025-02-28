@@ -1,63 +1,71 @@
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
+import { useRouter } from 'expo-router';
 
+export default function RecordsIndex() {
+  const router = useRouter(); 
 
-
-export default function RecordsScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      {/* Medical Record섹션 */}
-      <View style={styles.topSection}>
+      <TouchableOpacity
+        style={styles.topSection}
+        onPress={() => {
+          router.replace('/(tabs)/records/medicalRecordList');
+        }}
+        >
         <Text style={styles.sectionTitle}>Medical Record</Text>
-          <View style={styles.recordItemTop}>
-            <Text style={styles.labelTop}>Date of visit</Text>
-            <Text style={styles.valueTop}>2024.11.24</Text>
-          </View>
-          <View style={styles.recordItemTop}>
-            <Text style={styles.labelTop}>Visiting Hospital</Text>
-            <Text style={styles.valueTop}>Hanyang Hospital</Text>
-          </View>
-          <View style={styles.recordItemTop}>
-            <Text style={styles.labelTop}>Medical Subjects</Text>
-            <Text style={styles.valueTop}>sgdfgsdgfg</Text>
-          </View>
-          <View style={styles.recordItemTop}>
-            <Text style={styles.labelTop}>Symptoms</Text>
-            <Text style={styles.valueTop}>sgdfgsdgfg</Text>
-          </View>
-          <View style={styles.cornerRadiusTop}>
-            <Text style={styles.labelTop}>Treatment Summary</Text>
-            <Text style={styles.valueTop}>asdfasdfasasdfasdfasdfasf</Text>
-          </View>
-      </View>
-
-      {/* Health Status 섹션 */}
-      <View style={styles.bottomSection}>
-        <Text style={styles.sectionTitle}>Health Status</Text>
-          <View style={styles.recordItemBottom}>
-            <Text style={styles.labelBottom}>Disease</Text>
-            <Text style={styles.valueBottom}>asdfasdfasd</Text>
-          </View>
-          <View style={styles.recordItemBottom}>
-            <Text style={styles.labelBottom}>Allergy</Text>
-            <Text style={styles.valueBottom}>asdfasdfasd</Text>
-          </View>
-          <View style={styles.cornerRadiusBotttom}>
-            <Text style={styles.labelBottom}>Blood pressure</Text>
-            <Text style={styles.valueBottom}>asdfasdfasd</Text>
-          </View>
+        <View style={styles.recordItemTop}>
+          <Text style={styles.labelTop}>Date of visit</Text>
+          <Text style={styles.valueTop}>2024.11.24</Text>
         </View>
+        <View style={styles.recordItemTop}>
+          <Text style={styles.labelTop}>Visiting Hospital</Text>
+          <Text style={styles.valueTop}>Hanyang Hospital</Text>
+        </View>
+        <View style={styles.recordItemTop}>
+          <Text style={styles.labelTop}>Medical Subjects</Text>
+          <Text style={styles.valueTop}>sgdfgsdgfg</Text>
+        </View>
+        <View style={styles.recordItemTop}>
+          <Text style={styles.labelTop}>Symptoms</Text>
+          <Text style={styles.valueTop}>sgdfgsdgfg</Text>
+        </View>
+        <View style={styles.cornerRadiusTop}>
+          <Text style={styles.labelTop}>Treatment Summary</Text>
+          <Text style={styles.valueTop}>asdfasdfasasdfasdfasdfasf</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+      style={styles.bottomSection}
+      onPress={() => {
+        router.replace('/(tabs)/records/healthStatusRecordList');
+      }}
+      >
+        <Text style={styles.sectionTitle}>Health Status</Text>
+        <View style={styles.recordItemBottom}>
+          <Text style={styles.labelBottom}>Disease</Text>
+          <Text style={styles.valueBottom}>asdfasdfasd</Text>
+        </View>
+        <View style={styles.recordItemBottom}>
+          <Text style={styles.labelBottom}>Allergy</Text>
+          <Text style={styles.valueBottom}>asdfasdfasd</Text>
+        </View>
+        <View style={styles.cornerRadiusBotttom}>
+          <Text style={styles.labelBottom}>Blood pressure</Text>
+          <Text style={styles.valueBottom}>asdfasdfasd</Text>
+        </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
 
-// 스타일
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F5F9FC", 
     marginTop:14,
   },
   topSection: {
-    backgroundColor: "#E3F5F6",
+    backgroundColor: "#EEF6F9",
     borderRadius: 10,
     marginLeft:16,
     marginRight:16,
@@ -68,7 +76,7 @@ const styles = StyleSheet.create({
     marginBottom:20,
   },
   bottomSection: {
-    backgroundColor: "#E3F5F6",
+    backgroundColor: "#EEF6F9",
     borderRadius: 12,
     marginLeft:16,
     marginRight:16,
@@ -76,10 +84,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 4 },
     shadowRadius: 4,
-  },
-  inner: {
-    backgroundColor: "#FFFFFF",
-    margin:0,
   },
   sectionTitle: {
     marginTop:13,
@@ -150,4 +154,3 @@ const styles = StyleSheet.create({
     marginRight:16,
   },
 });
-
