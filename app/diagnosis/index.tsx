@@ -40,7 +40,7 @@ export default function DiagnosisScreen() {
           </View>
         )}
         ListFooterComponent={ 
-          <CustomButton style={styles.nextButton} onPress={()=> {}}>
+          <CustomButton style={styles.nextButton} onPress={()=> {router.push("/diagnosis/funnel")}}>
             <Text style={styles.nextButtonText}>Next</Text>
           </CustomButton>
         }
