@@ -22,3 +22,15 @@ export const FAQ_DATA = [
       answer: `Reduce communication barriers with your healthcare provider\n\nSave time during your visit\n\nEnsure important symptoms aren’t missed\n\nGet more accurate medical recommendations`,
     },
   ];
+
+  export const SYMPTOMS = ['Sore throat', 'Chills', 'Runny nose', 'Cough','감기','기침','감기 몸살'];
+
+
+  export const DURATION_OPTIONS = [
+    'Less than a day',
+    '1-3 days',
+    'More than 3 days',
+    'More than a week',
+    'More than a month',
+  ];
+  

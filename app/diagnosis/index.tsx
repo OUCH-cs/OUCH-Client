@@ -9,11 +9,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/shared/components/button/CustomButton";
 import { FAQ_DATA } from "@/shared/mocks/data";
 
-export default function DiagnosisScreen() {
+const DiagnosisScreen = () => {
   const router = useRouter();
-  const [openId, setOpenId] = useState(null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
-  const toggleAccordion = (id : any) => {
+  const toggleAccordion = (id : string | null) => {
     setOpenId(openId === id ? null : id);
   };
 
@@ -50,6 +50,8 @@ export default function DiagnosisScreen() {
     </SafeAreaView>
   );
 }
+
+export default DiagnosisScreen
 
 const styles = StyleSheet.create({
   container: {
