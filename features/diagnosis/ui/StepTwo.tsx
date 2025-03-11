@@ -1,18 +1,12 @@
-import { View, Text, Pressable, StyleSheet, Button } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 import CustomButton from '@/shared/components/button/CustomButton';
 import { Label } from '@/shared/components/label/Label';
-import { useRouter } from 'expo-router';
 import theme from '@/shared/styles/theme';
 import PlusButton from '@/assets/icons/diagnosis/PlusButton';
 import SymptomsList from './SymptomsList';
-
-
-export interface StepProps {
-  onNext: () => void;
-}
+import { StepProps } from '../diagnosis.type';
 
 const StepTwo = ({ onNext }: StepProps) => {
-  const router = useRouter();
 
   return (
     <View style={styles.container} >

@@ -2,21 +2,17 @@ import { useState } from 'react';
 import { View, Pressable, StyleSheet, Button } from 'react-native';
 import SelectedSymptoms from './SelectedSymptoms';
 import CustomButton from '@/shared/components/button/CustomButton';
-import { useStore } from '../lib/useStore';
 import theme from '@/shared/styles/theme';
-import { useRouter } from 'expo-router';
 import { Label } from '@/shared/components/label/Label';
 import Collapsible from 'react-native-collapsible';
 import { Ionicons } from "@expo/vector-icons";
 import { DURATION_OPTIONS } from '@/shared/mocks/data';
-
-export interface StepProps {
-  onNext: () => void;
-}
+import { useFormContext } from "react-hook-form"; 
+import { StepProps } from '../diagnosis.type';
 
 const StepThree = ({ onNext }: StepProps) => {
-  const router = useRouter()
-  const { duration, setDuration } = useStore();
+  const { setValue, watch } = useFormContext<{ duration: string}>();
+  const duration: string = watch("duration") || "";
   const [dropdownOpen, setDropdownOpen] = useState(true);
 
   return (
@@ -43,7 +39,7 @@ const StepThree = ({ onNext }: StepProps) => {
                   duration === item && styles.selectedDropdownItem,
                 ]}
                 onPress={() => {
-                  setDuration(item);
+                  setValue("duration", item);
                   setDropdownOpen(false);
                 }}
               >

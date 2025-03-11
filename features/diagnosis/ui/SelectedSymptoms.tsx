@@ -1,11 +1,18 @@
 import { View, Pressable, StyleSheet} from 'react-native';
 import { Label } from '@/shared/components/label/Label';
-import { useStore } from '../lib/useStore';
 import theme from '@/shared/styles/theme';
+import { useFormContext } from "react-hook-form"
+
 
 const SelectedSymptoms = () => {
-    const { selectedSymptoms, removeSymptom } = useStore();
-    
+    const { getValues, setValue } = useFormContext<{ symptoms: string[] }>();
+    const selectedSymptoms = getValues("symptoms") || []; 
+      
+    const removeSymptom = (symptom: string) => {
+      const updatedSymptoms = selectedSymptoms.filter((s) => s !== symptom);
+      setValue("symptoms", updatedSymptoms); 
+    };
+
     return (
         <View style={styles.symptomsContainer}>
             <Label style={styles.selectedSymptoms}>selected symptoms</Label>

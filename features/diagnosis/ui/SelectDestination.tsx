@@ -1,10 +1,12 @@
 import { View, Pressable, StyleSheet } from "react-native"
 import { Label } from "@/shared/components/label/Label"
 import theme from "@/shared/styles/theme"
-import { useStore } from "../lib/useStore"
+import { SelectDestinationProps, DestinationType } from "../diagnosis.type";
+import { useFormContext } from "react-hook-form";
 
-const SelectDestination = () => {
-    const { selectedDestination, setDestination } = useStore();
+const SelectDestination = ({selectedDestination}:SelectDestinationProps) => {
+
+    const { setValue } = useFormContext<{ destination: DestinationType }>(); 
     
     return(
         <View style={styles.buttonContainer}>
@@ -13,7 +15,7 @@ const SelectDestination = () => {
             styles.optionButton,
             selectedDestination === 'Hospital' && styles.selectedButton,
           ]}
-          onPress={() => setDestination('Hospital')}
+          onPress={() => setValue("destination", "Hospital")}
         >
           <Label
             style={[
@@ -29,7 +31,7 @@ const SelectDestination = () => {
             styles.optionButton,
             selectedDestination === 'Pharmacy' && styles.selectedButton,
           ]}
-          onPress={() => setDestination('Pharmacy')}
+          onPress={() => setValue("destination", "Pharmacy")}
         >
           <Label
             style={[
@@ -41,9 +43,7 @@ const SelectDestination = () => {
           </Label>
         </Pressable>
       </View>
-
     )
-
 }
 
 export default SelectDestination

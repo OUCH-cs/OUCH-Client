@@ -1,21 +1,22 @@
 import { SYMPTOMS } from '@/shared/mocks/data';
-import { FlatList, Pressable, StyleSheet, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet } from 'react-native';
 import { Label } from '@/shared/components/label/Label';
 import theme from '@/shared/styles/theme';
-import { useStore } from '../lib/useStore';
+import { useFormContext } from "react-hook-form"; 
 
-const ITEMS_PER_ROW = 5; // 한 줄에 3개씩 배치
+const ITEMS_PER_ROW = 5; 
 
 const SymptomsList = () => {
-    const { selectedSymptoms, addSymptom, removeSymptom } = useStore();
+    const { setValue, watch } = useFormContext<{symptoms:string[]}>(); 
+    const selectedSymptoms: string[] = watch("symptoms") || []; 
 
     const toggleSymptom = (symptom: string) => {
-        if (selectedSymptoms.includes(symptom)) {
-          removeSymptom(symptom);
-        } else {
-          addSymptom(symptom);
-        }
-      };
+      const updatedSymptoms = selectedSymptoms.includes(symptom)
+        ? selectedSymptoms.filter((s:string) => s !== symptom) 
+        : [...selectedSymptoms, symptom]; 
+
+      setValue("symptoms", updatedSymptoms); 
+    };
     
     const chunkArray = (arr: string[], size: number) => {
       return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
@@ -78,10 +79,8 @@ export const styles = StyleSheet.create({
     symptomsContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
-      flexWrap: 'wrap',
       marginTop:16,
       gap:4,
-  
     },
   
     row: {

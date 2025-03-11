@@ -1,26 +1,25 @@
-import { View, Pressable, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import { Label } from '@/shared/components/label/Label';
 import { useRouter } from 'expo-router';
-import { useStore } from '../lib/useStore';
 import theme from '@/shared/styles/theme';
 import CustomButton from '@/shared/components/button/CustomButton';
 import SelectDestination from './SelectDestination';
-
-export interface StepProps {
-  onNext: () => void;
-}
+import { useFormContext } from "react-hook-form"; 
+import { DestinationType, StepProps } from '../diagnosis.type';
 
 const StepOne = ({ onNext }: StepProps) => {
-  const { selectedDestination, setDestination } = useStore();
+  const { watch } = useFormContext<{ destination: DestinationType }>(); 
+  const selectedDestination = watch("destination") ?? undefined; 
   const router = useRouter();
 
   return (
     <View style={styles.container}>
       <Label style={styles.question}>Where do you want to go?</Label>
-      <SelectDestination/>
+      <SelectDestination selectedDestination={selectedDestination}/>
       <CustomButton style={styles.nextButton} disabled={!selectedDestination} onPress={()=>{onNext()}}>
         <Label style={styles.nextButtonText}>Next</Label>
       </CustomButton>
+      <Button title="뒤로 가기" onPress={() => router.back()} />
     </View>
   );
 }
