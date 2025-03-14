@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.background,
     paddingHorizontal:16,
   },
+  
   header: {
     fontSize: 20,
     marginBottom: 48,

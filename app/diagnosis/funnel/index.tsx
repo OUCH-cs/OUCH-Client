@@ -9,6 +9,7 @@ import { handleNextClick } from '@/features/diagnosis/services/progressStep';
 import theme from '@/shared/styles/theme';
 import { Label } from '@/shared/components/label/Label';
 import { useForm, FormProvider } from 'react-hook-form';
+import { useDiagnosisStore } from '@/features/diagnosis/services/pageState';
 
 type DiagnosisFormData = {
   destination: "Hospital" | "Pharmacy";
@@ -21,6 +22,7 @@ type DiagnosisFormData = {
 const steps = ['1', '2', '3', '4', '5'];
 
 const DiagnosisPostPage =() => {
+  const { currentPage } = useDiagnosisStore();
 
   const { Funnel, Step, setStep } = useFunnel(steps[0]);
   const { currentStep, setCurrentStep, initialProgress, getCurrentStepIndex } = useProgress(steps);
@@ -47,7 +49,7 @@ const DiagnosisPostPage =() => {
       <SafeAreaView style={styles.container}>
         <Label style={styles.title}>Self-diagnosis</Label>
         <FormProvider {...methods}>
-          <ProgressBar progress={progress} currentStep={currentStep}/>
+          {currentPage === "main" && <ProgressBar progress={progress} currentStep={currentStep}/>}
           <DiagnosisPost
             steps={steps}
             nextClickHandler={nextClickHandler} 

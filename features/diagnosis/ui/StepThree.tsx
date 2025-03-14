@@ -56,6 +56,7 @@ const StepThree = ({ onNext }: StepProps) => {
         }
         </Collapsible>
       </View>
+      
       <CustomButton style={styles.nextButton} disabled={!duration} onPress={()=>{onNext()}}>
         <Label style={styles.nextButtonText}>Next</Label>
       </CustomButton>

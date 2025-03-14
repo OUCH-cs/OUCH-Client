@@ -5,22 +5,32 @@ import theme from '@/shared/styles/theme';
 import PlusButton from '@/assets/icons/diagnosis/PlusButton';
 import SymptomsList from './SymptomsList';
 import { StepProps } from '../diagnosis.type';
+import { useDiagnosisStore } from '../services/pageState';
+import AddSymptoms from './AddSymptoms';
 
 const StepTwo = ({ onNext }: StepProps) => {
+  const { currentPage, setPage } = useDiagnosisStore();
 
   return (
     <View style={styles.container} >
-      <Text style={styles.question}>Please select your symptoms</Text>
-      <SymptomsList/>
-      <Pressable
-          style={styles.addButton}
-          onPress={() => {}}
-      >
-        <PlusButton/>
-      </Pressable>
-      <CustomButton style={styles.nextButton} onPress={()=>{onNext()}}>
-        <Label style={styles.nextButtonText}>Next</Label>
-      </CustomButton>
+      {currentPage === "main" ? (
+        <>
+          <Text style={styles.question}>Please select your symptoms</Text>
+          <SymptomsList/>
+          <Pressable
+              style={styles.addButton}
+              onPress={() => setPage("add")}
+          >
+            <PlusButton/>
+          </Pressable>
+          <CustomButton style={styles.nextButton} onPress={()=>{onNext()}}>
+            <Label style={styles.nextButtonText}>Next</Label>
+          </CustomButton>
+        </>
+      ) : (
+        <AddSymptoms onClose={() => setPage("main")}/>
+      )
+      }
     </View>
   );
 }

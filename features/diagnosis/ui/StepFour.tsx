@@ -31,6 +31,7 @@ export const styles = StyleSheet.create({
   container: {
     paddingTop:46,
   },
+
   question: {
     fontSize: 21,
     textAlign: 'center',
@@ -49,6 +50,5 @@ export const styles = StyleSheet.create({
   nextButtonText: {
     color: theme.colors.white,
     fontSize: 18,
-
   },
 });
