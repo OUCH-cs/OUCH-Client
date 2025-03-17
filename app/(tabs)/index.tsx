@@ -10,20 +10,14 @@ import HospitalRate from "@/assets/icons/hospital/HospitalRate";
 import { Dimensions } from "react-native";
 import { useRouter } from "expo-router";
 import HomeLocation from "@/assets/icons/home/HomeLocation";
+import { hospitals } from "@/shared/mocks/data";
 
 
 export default function HomeScreen() {
   const isSignedIn = useAuthStore((state) => state.isSignedIn);
   const signOut = useAuthStore((state) => state.signOut);
   const router = useRouter();
-  //mock data 처리
-  const hospitals = [
-    { id: "1", name: "Hanyang Hospital", rating: 4.3, distance: "768m", openStatus: "Open / Closed every Wednesday" },
-    { id: "2", name: "Hanyang Hospital", rating: 4.3, distance: "768m", openStatus: "Open / Closed every Wednesday" },
-    { id: "3", name: "Hanyang Hospital", rating: 4.3, distance: "768m", openStatus: "Open / Closed every Wednesday" },
-    { id: "4", name: "Hanyang Hospital", rating: 4.3, distance: "768m", openStatus: "Open / Closed every Wednesday" },
-  ];
-
+  
   return (
     <SafeAreaView style={styles.container}>
       {/* 헤더, 상단 위치, 언어 선택 임시 */}

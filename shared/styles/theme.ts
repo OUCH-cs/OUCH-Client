@@ -11,6 +11,7 @@ type ThemeType = {
     white_f1: string;
     white_f5: string;
     white_e5: string;
+    white_ec: string;
     gray_de: string;
     gray_d1: string;
     gray_7: string;
@@ -33,6 +34,7 @@ const theme: ThemeType = {
     white_f1: "#F1F1F5",
     white_f5: "#F5F5F5",
     white_e5: "#E5E5EC",
+    white_ec: "#ECF9FA",
 
     gray_de: "#DEDEDE",
     gray_d1: "#D1D1D1",
