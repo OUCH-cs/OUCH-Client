@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, Pressable, StyleSheet, Button } from 'react-native';
 import SelectedSymptoms from './SelectedSymptoms';
 import CustomButton from '@/shared/components/button/CustomButton';
-import { useStore } from '../lib/useStore';
+import { useStore } from '../services/useStore';
 import theme from '@/shared/styles/theme';
 import { useRouter } from 'expo-router';
 import { Label } from '@/shared/components/label/Label';

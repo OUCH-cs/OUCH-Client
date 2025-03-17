@@ -1,7 +1,7 @@
 import { View, Pressable, StyleSheet, Button } from 'react-native';
 import { Label } from '@/shared/components/label/Label';
 import { useRouter } from 'expo-router';
-import { useStore } from '../lib/useStore';
+import { useStore } from '../services/useStore';
 import theme from '@/shared/styles/theme';
 import CustomButton from '@/shared/components/button/CustomButton';
 import SelectDestination from './SelectDestination';

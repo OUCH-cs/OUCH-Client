@@ -1,6 +1,6 @@
 import { View, Pressable, StyleSheet} from 'react-native';
 import { Label } from '@/shared/components/label/Label';
-import { useStore } from '../lib/useStore';
+import { useStore } from '../services/useStore';
 import theme from '@/shared/styles/theme';
 
 const SelectedSymptoms = () => {

@@ -2,7 +2,7 @@ import { SYMPTOMS } from '@/shared/mocks/data';
 import { FlatList, Pressable, StyleSheet, View } from 'react-native';
 import { Label } from '@/shared/components/label/Label';
 import theme from '@/shared/styles/theme';
-import { useStore } from '../lib/useStore';
+import { useStore } from '../services/useStore';
 
 const ITEMS_PER_ROW = 5; // 한 줄에 3개씩 배치
 

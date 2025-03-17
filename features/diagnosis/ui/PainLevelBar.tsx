@@ -1,7 +1,7 @@
 import { View, StyleSheet, Platform } from 'react-native';
 import { Label } from '@/shared/components/label/Label';
 import theme from '@/shared/styles/theme';
-import { useStore } from '../lib/useStore';
+import { useStore } from '../services/useStore';
 import Slider from '@react-native-assets/slider';
 
 const PainLevelBar = () => {
