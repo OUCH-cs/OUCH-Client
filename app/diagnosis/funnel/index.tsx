@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProgressBar from '@/features/diagnosis/ui/ProgressBar';
 import useProgress from '@/features/diagnosis/lib/useProgress';
-import { handleNextClick } from '@/features/diagnosis/services/progressStep';
+import { handleNextClick } from '@/features/diagnosis/services/updateProgress';
 import theme from '@/shared/styles/theme';
 
 const steps = ['1', '2', '3', '4', '5'];
