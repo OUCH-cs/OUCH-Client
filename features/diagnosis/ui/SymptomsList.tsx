@@ -1,31 +1,39 @@
+import { FlatList, Pressable, StyleSheet } from "react-native";
+import { Label } from "@/shared/components/label/Label";
+import theme from "@/shared/styles/theme";
+import { useFormContext } from "react-hook-form"; 
+import { useSymptomsStore } from "../services/useDiagnosisStore";
 import { SYMPTOMS } from '@/shared/mocks/data';
-import { FlatList, Pressable, StyleSheet, View } from 'react-native';
-import { Label } from '@/shared/components/label/Label';
-import theme from '@/shared/styles/theme';
-import { useStore } from '../services/useStore';
 
-const ITEMS_PER_ROW = 5; // 한 줄에 3개씩 배치
+// 한줄당 렌더링할 증상의 개수
+const ITEMS_PER_ROW = 5; 
 
+// 증상 카테고리 리스트 컴포넌트
 const SymptomsList = () => {
-    const { selectedSymptoms, addSymptom, removeSymptom } = useStore();
+    const { setValue, watch } = useFormContext<{ symptoms: string[] }>(); 
+    const selectedSymptoms: string[] = watch("symptoms") || []; 
+    const { customSymptoms } = useSymptomsStore();
+    const allSymptoms = [...SYMPTOMS, ...customSymptoms];
 
+    // 증상 선택시 선택된 증상 상태 변경
     const toggleSymptom = (symptom: string) => {
-        if (selectedSymptoms.includes(symptom)) {
-          removeSymptom(symptom);
-        } else {
-          addSymptom(symptom);
-        }
-      };
-    
+      const updatedSymptoms = selectedSymptoms.includes(symptom)
+        ? selectedSymptoms.filter((s: string) => s !== symptom) 
+        : [...selectedSymptoms, symptom]; 
+
+      setValue("symptoms", updatedSymptoms); 
+    };
+
+    // 한 줄에 몇개 씩 끊어 렌더링하기 위한 함수
     const chunkArray = (arr: string[], size: number) => {
       return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
         arr.slice(i * size, i * size + size)
       );
     };
-    
-    const groupedSymptoms = chunkArray(SYMPTOMS, ITEMS_PER_ROW);
 
-    return(
+    const groupedSymptoms = chunkArray(allSymptoms, ITEMS_PER_ROW);
+
+    return (
         <>
         {groupedSymptoms.map((group, index) => (
             <FlatList
@@ -33,6 +41,7 @@ const SymptomsList = () => {
               data={group}
               horizontal
               pagingEnabled
+              scrollEnabled={true}
               showsHorizontalScrollIndicator={false}
               keyExtractor={(item) => item}
               contentContainerStyle={styles.symptomsContainer}
@@ -57,10 +66,11 @@ const SymptomsList = () => {
             />
           ))}
         </>
-        
-    )
+    );
 }
-export default SymptomsList
+
+export default SymptomsList;
+
 
 
 export const styles = StyleSheet.create({
@@ -78,10 +88,8 @@ export const styles = StyleSheet.create({
     symptomsContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
-      flexWrap: 'wrap',
       marginTop:16,
       gap:4,
-  
     },
   
     row: {

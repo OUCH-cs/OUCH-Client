@@ -1,18 +1,12 @@
-import {
-  View,
-  StyleSheet,
-  Button
-} from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import { Label } from '@/shared/components/label/Label';
 import CustomButton from '@/shared/components/button/CustomButton';
-import SelectedSymptoms from './SelectedSymptoms';
-import PainLevelBar from './PainLevelBar';
+import SelectedSymptoms from '../SelectedSymptoms';
+import PainLevelBar from '../PainLevelBar';
 import { useRouter } from 'expo-router';
 import theme from '@/shared/styles/theme';
+import { StepProps } from '../../diagnosis.type';
 
-export interface StepProps {
-  onNext: () => void;
-}
 
 const StepFour = ({ onNext }: StepProps) => {
   const router = useRouter();
@@ -25,6 +19,7 @@ const StepFour = ({ onNext }: StepProps) => {
       <CustomButton style={styles.nextButton} onPress={() => {onNext()}}>
         <Label style={styles.nextButtonText}>Next</Label>
       </CustomButton>
+      <Button title="뒤로 가기" onPress={() => router.back()} />
     </View>
   );
 };
@@ -36,6 +31,7 @@ export const styles = StyleSheet.create({
   container: {
     paddingTop:46,
   },
+
   question: {
     fontSize: 21,
     textAlign: 'center',
@@ -54,6 +50,5 @@ export const styles = StyleSheet.create({
   nextButtonText: {
     color: theme.colors.white,
     fontSize: 18,
-
   },
 });

@@ -1,11 +1,12 @@
-import { View, StyleSheet, Platform } from 'react-native';
+import { View, StyleSheet} from 'react-native';
 import { Label } from '@/shared/components/label/Label';
 import theme from '@/shared/styles/theme';
-import { useStore } from '../services/useStore';
 import Slider from '@react-native-assets/slider';
+import { Controller, useFormContext } from "react-hook-form"
 
+// 통증세기 입력바 컴포넌트
 const PainLevelBar = () => {
-    const { painLevel, setPainLevel } = useStore();
+    const { control } = useFormContext<{ painLevel: number }>();
 
     return (
         <View style={styles.scaleContainer}>    
@@ -14,18 +15,24 @@ const PainLevelBar = () => {
           <Label style={styles.scaleText}>10</Label>
         </View>
         <View style={styles.sliderContainer}>
-          <Slider
-            style={styles.slider}
-            minimumValue={0}
-            maximumValue={10}
-            step={1}
-            value={painLevel}
-            onValueChange={setPainLevel}
-            minimumTrackTintColor={theme.colors.primary}
-            maximumTrackTintColor={theme.colors.white_ec}
-            thumbTintColor={theme.colors.primary} 
-            trackStyle={styles.track}
-            thumbStyle={styles.thumb}
+          <Controller
+            name="painLevel"
+            control={control}
+            render={({ field: { value, onChange } }) => (
+              <Slider
+                style={styles.slider}
+                minimumValue={0}
+                maximumValue={10}
+                step={1}
+                value={value}
+                onValueChange={onChange}
+                minimumTrackTintColor={theme.colors.primary}
+                maximumTrackTintColor={theme.colors.white_ec}
+                thumbTintColor={theme.colors.primary}
+                trackStyle={styles.track}
+                thumbStyle={styles.thumb}
+              />
+            )}
           />
         </View>
         <View style={styles.scaleLabelContainer}>

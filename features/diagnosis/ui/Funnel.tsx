@@ -1,10 +1,10 @@
 import React from 'react';
 import { FunnelProps, StepProps } from '../lib/useFunnel';
-import StepOne from './StepOne';
-import StepTwo from './StepTwo';
-import StepThree from './StepThree';
-import StepFour from './StepFour';
-import StepFive from './StepFive';
+import StepOne from './pages/StepOne';
+import StepTwo from './pages/StepTwo';
+import StepThree from './pages/StepThree';
+import StepFour from './pages/StepFour';
+import StepFive from './pages/StepFive';
 
 export interface ClassPostProps {
   steps: string[];

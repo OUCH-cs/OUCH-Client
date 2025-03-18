@@ -1,32 +1,36 @@
-import { View, Text, Pressable, StyleSheet, Button } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 import CustomButton from '@/shared/components/button/CustomButton';
 import { Label } from '@/shared/components/label/Label';
-import { useRouter } from 'expo-router';
 import theme from '@/shared/styles/theme';
 import PlusButton from '@/assets/icons/diagnosis/PlusButton';
-import SymptomsList from './SymptomsList';
-
-
-export interface StepProps {
-  onNext: () => void;
-}
+import SymptomsList from '../SymptomsList';
+import { StepProps } from '../../diagnosis.type';
+import { useDiagnosisStore } from '../../services/useDiagnosisStore';
+import AddSymptoms from './AddSymptomsPage';
 
 const StepTwo = ({ onNext }: StepProps) => {
-  const router = useRouter();
+  const { currentPage, setPage } = useDiagnosisStore();
 
   return (
     <View style={styles.container} >
-      <Text style={styles.question}>Please select your symptoms</Text>
-      <SymptomsList/>
-      <Pressable
-          style={styles.addButton}
-          onPress={() => {}}
-      >
-        <PlusButton/>
-      </Pressable>
-      <CustomButton style={styles.nextButton} onPress={()=>{onNext()}}>
-        <Label style={styles.nextButtonText}>Next</Label>
-      </CustomButton>
+      {currentPage === "main" ? (
+        <>
+          <Text style={styles.question}>Please select your symptoms</Text>
+          <SymptomsList/>
+          <Pressable
+              style={styles.addButton}
+              onPress={() => setPage("add")}
+          >
+            <PlusButton/>
+          </Pressable>
+          <CustomButton style={styles.nextButton} onPress={()=>{onNext()}}>
+            <Label style={styles.nextButtonText}>Next</Label>
+          </CustomButton>
+        </>
+      ) : (
+        <AddSymptoms onClose={() => setPage("main")}/>
+      )
+      }
     </View>
   );
 }
