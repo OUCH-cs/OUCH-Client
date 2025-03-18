@@ -1,5 +1,5 @@
 import { View, Pressable, TextInput, StyleSheet, Button, Platform} from 'react-native';
-import SelectedSymptoms from './SelectedSymptoms';
+import SelectedSymptoms from '../SelectedSymptoms';
 import { useRouter } from 'expo-router';
 import theme from '@/shared/styles/theme';
 import { Label } from '@/shared/components/label/Label';

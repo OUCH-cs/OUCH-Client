@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View, Pressable, StyleSheet, Button } from 'react-native';
-import SelectedSymptoms from './SelectedSymptoms';
+import SelectedSymptoms from '../SelectedSymptoms';
 import CustomButton from '@/shared/components/button/CustomButton';
 import theme from '@/shared/styles/theme';
 import { Label } from '@/shared/components/label/Label';
@@ -8,7 +8,7 @@ import Collapsible from 'react-native-collapsible';
 import { Ionicons } from "@expo/vector-icons";
 import { DURATION_OPTIONS } from '@/shared/mocks/data';
 import { useFormContext } from "react-hook-form"; 
-import { StepProps } from '../diagnosis.type';
+import { StepProps } from '../../diagnosis.type';
 
 const StepThree = ({ onNext }: StepProps) => {
   const { setValue, watch } = useFormContext<{ duration: string}>();

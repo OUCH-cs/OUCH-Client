@@ -3,9 +3,9 @@ import { Label } from '@/shared/components/label/Label';
 import { useRouter } from 'expo-router';
 import theme from '@/shared/styles/theme';
 import CustomButton from '@/shared/components/button/CustomButton';
-import SelectDestination from './SelectDestination';
+import SelectDestination from '../SelectDestination';
 import { useFormContext } from "react-hook-form"; 
-import { DestinationType, StepProps } from '../diagnosis.type';
+import { DestinationType, StepProps } from "../../diagnosis.type";
 
 const StepOne = ({ onNext }: StepProps) => {
   const { watch } = useFormContext<{ destination: DestinationType }>(); 

@@ -1,11 +1,11 @@
 import { View, StyleSheet, Button } from 'react-native';
 import { Label } from '@/shared/components/label/Label';
 import CustomButton from '@/shared/components/button/CustomButton';
-import SelectedSymptoms from './SelectedSymptoms';
-import PainLevelBar from './PainLevelBar';
+import SelectedSymptoms from '../SelectedSymptoms';
+import PainLevelBar from '../PainLevelBar';
 import { useRouter } from 'expo-router';
 import theme from '@/shared/styles/theme';
-import { StepProps } from '../diagnosis.type';
+import { StepProps } from '../../diagnosis.type';
 
 
 const StepFour = ({ onNext }: StepProps) => {

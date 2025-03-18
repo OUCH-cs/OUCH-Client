@@ -3,10 +3,10 @@ import CustomButton from '@/shared/components/button/CustomButton';
 import { Label } from '@/shared/components/label/Label';
 import theme from '@/shared/styles/theme';
 import PlusButton from '@/assets/icons/diagnosis/PlusButton';
-import SymptomsList from './SymptomsList';
-import { StepProps } from '../diagnosis.type';
-import { useDiagnosisStore } from '../services/pageState';
-import AddSymptoms from './AddSymptoms';
+import SymptomsList from '../SymptomsList';
+import { StepProps } from '../../diagnosis.type';
+import { useDiagnosisStore } from '../../services/pageState';
+import AddSymptoms from './AddSymptomsPage';
 
 const StepTwo = ({ onNext }: StepProps) => {
   const { currentPage, setPage } = useDiagnosisStore();
