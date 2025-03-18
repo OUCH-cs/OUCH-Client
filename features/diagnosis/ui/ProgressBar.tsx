@@ -8,6 +8,7 @@ interface ProgressBarProps {
   currentStep: string;
 }
 
+// 진행률 바 컴포넌트
 const ProgressBar = ({ progress, currentStep}: ProgressBarProps) => {
     const animatedWidth = useRef(new Animated.Value(0)).current;
 

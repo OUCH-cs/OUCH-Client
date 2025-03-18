@@ -4,6 +4,7 @@ import theme from '@/shared/styles/theme';
 import Slider from '@react-native-assets/slider';
 import { Controller, useFormContext } from "react-hook-form"
 
+// 통증세기 입력바 컴포넌트
 const PainLevelBar = () => {
     const { control } = useFormContext<{ painLevel: number }>();
 

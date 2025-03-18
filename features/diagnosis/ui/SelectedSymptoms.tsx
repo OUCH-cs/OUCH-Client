@@ -3,10 +3,12 @@ import { Label } from '@/shared/components/label/Label';
 import theme from '@/shared/styles/theme';
 import { useFormContext } from "react-hook-form";
 
+// 선택된 증상 렌더링 컴포넌트
 const SelectedSymptoms = () => {
     const { getValues, setValue } = useFormContext<{ symptoms: string[] }>();
     const selectedSymptoms = getValues("symptoms") || []; 
 
+    // 증상 제거 함수
     const removeSymptom = (symptom: string) => {
       const updatedSymptoms = selectedSymptoms.filter((s) => s !== symptom);
       setValue("symptoms", updatedSymptoms); 
@@ -17,9 +19,9 @@ const SelectedSymptoms = () => {
             <Label style={styles.selectedSymptoms}>Selected symptoms</Label>
             <FlatList
                 data={selectedSymptoms}
-                horizontal={true} // 가로 스크롤 활성화
+                horizontal={true} 
                 keyExtractor={(item) => item}
-                showsHorizontalScrollIndicator={false} // 스크롤 바 숨기기
+                showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.symptomsContainer}
                 renderItem={({ item }) => (
                     <View style={styles.symptomBadge}>

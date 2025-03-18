@@ -4,6 +4,7 @@ import theme from "@/shared/styles/theme"
 import { SelectDestinationProps, DestinationType } from "../diagnosis.type";
 import { useFormContext } from "react-hook-form";
 
+// 목적지 선택 컴포넌트 (병원, 약국 선택))
 const SelectDestination = ({selectedDestination}:SelectDestinationProps) => {
 
     const { setValue } = useFormContext<{ destination: DestinationType }>(); 
