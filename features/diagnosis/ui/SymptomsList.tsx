@@ -2,7 +2,7 @@ import { FlatList, Pressable, StyleSheet } from "react-native";
 import { Label } from "@/shared/components/label/Label";
 import theme from "@/shared/styles/theme";
 import { useFormContext } from "react-hook-form"; 
-import { useSymptomsStore } from "../services/useSymptomsStore";
+import { useSymptomsStore } from "../services/useDiagnosisStore";
 import { SYMPTOMS } from '@/shared/mocks/data';
 
 // 한줄당 렌더링할 증상의 개수

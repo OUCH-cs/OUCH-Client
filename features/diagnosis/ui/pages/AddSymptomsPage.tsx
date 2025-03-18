@@ -4,7 +4,7 @@ import { Label } from "@/shared/components/label/Label";
 import theme from "@/shared/styles/theme";
 import PlusButton from "@/assets/icons/diagnosis/PlusButton";
 import CustomButton from "@/shared/components/button/CustomButton";
-import { useSymptomsStore } from "../../services/useSymptomsStore";
+import { useSymptomsStore } from "../../services/useDiagnosisStore";
 import MinusButton from "@/assets/icons/diagnosis/MinusButton";
 
 

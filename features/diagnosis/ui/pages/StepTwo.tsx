@@ -5,7 +5,7 @@ import theme from '@/shared/styles/theme';
 import PlusButton from '@/assets/icons/diagnosis/PlusButton';
 import SymptomsList from '../SymptomsList';
 import { StepProps } from '../../diagnosis.type';
-import { useDiagnosisStore } from '../../services/pageState';
+import { useDiagnosisStore } from '../../services/useDiagnosisStore';
 import AddSymptoms from './AddSymptomsPage';
 
 const StepTwo = ({ onNext }: StepProps) => {

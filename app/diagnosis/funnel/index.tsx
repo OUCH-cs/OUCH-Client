@@ -9,7 +9,7 @@ import { handleNextClick } from '@/features/diagnosis/services/updateProgress';
 import theme from '@/shared/styles/theme';
 import { Label } from '@/shared/components/label/Label';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useDiagnosisStore } from '@/features/diagnosis/services/pageState';
+import { useDiagnosisStore } from '@/features/diagnosis/services/useDiagnosisStore';
 
 type DiagnosisFormData = {
   destination: "Hospital" | "Pharmacy";
