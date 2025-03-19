@@ -2,33 +2,19 @@ import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-na
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Label } from "@/shared/components/label/Label";
+import { hospitals } from '@/features/auth/services/records/consts/hospitalData';  // hospital import
 
 export default function MedicalRecordList() {
   const router = useRouter();
-  const hospitals = [
-    'Hanyang Hospital',
-    'Seoul Hospital',
-    'Busan Hospital',
-    'Incheon Hospital',
-    'Daegu Hospital'
-  ];
 
   const handleNavigate = (hospitalName) => {
     if (hospitalName === hospitals[0]) {
-      router.push('/(tabs)/records/medicalRecordListFull1');
-    } else if (hospitalName === hospitals[1]) {
-      router.push('/(tabs)/records/medicalRecordListFull2');
-    } else if (hospitalName === hospitals[2]) {
-      router.push('/(tabs)/records/medicalRecordListFull3');
-    } else if (hospitalName === hospitals[3]) {
-      router.push('/(tabs)/records/medicalRecordListFull4');
-    } else if (hospitalName === hospitals[4]) {
-      router.push('/(tabs)/records/medicalRecordListFull5');
-    }
+      router.push('/(tabs)/records/medicalRecord');
+    }  // API 연동 후 나머지 부분 처리
   };
 
   const handleNewPress = () => {
-    router.push('/(tabs)/records/medicalRecordListEdit1'); 
+    router.push('/(tabs)/records/medicalRecordEdit'); 
   };
 
   return (
