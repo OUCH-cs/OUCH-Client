@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import EditIcon from "@/assets/icons/EditIcon";
 import MedicalRecordList from "@/features/auth/services/records/medicalRecordList"; //medicalList import
 
-export default function MedicalRecordListEdit1() {
+export default function MedicalRecord() {
   const router = useRouter();
   
   const handleEditIconPress = () => {
