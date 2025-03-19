@@ -1,30 +1,15 @@
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { disease } from '@/features/auth/services/records/consts/diseaseData';  // disease import
 
 export default function MedicalRecordList() {
   const router = useRouter();
 
-  const diease = [
-    'diabetes,colic1',
-    'diabetes,colic2',
-    'diabetes,colic3',
-    'diabetes,colic4',
-    'diabetes,colic5',
-  ];
-
-  const handleNavigate = (dieaseName) => {
-    if (dieaseName === diease[0]) {
-      router.push('/(tabs)/records/healthStatusRecordListFull1');
-    } else if (dieaseName === diease[1]) {
-      router.push('/(tabs)/records/healthStatusRecordListFull2');
-    } else if (dieaseName === diease[2]) {
-      router.push('/(tabs)/records/healthStatusRecordListFull3');
-    } else if (dieaseName === diease[3]) {
-      router.push('/(tabs)/records/healthStatusRecordListFull4');
-    } else if (dieaseName === diease[4]) {
-      router.push('/(tabs)/records/healthStatusRecordListFull5');
-    }
+  const handleNavigate = (diseaseName) => {
+    if (diseaseName === disease[0]) {
+      router.push('/(tabs)/records/healthStatusRecord');
+    } // API 연동 후 나머지 부분 처리
   };
 
   const handleNewPress = () => {
@@ -43,17 +28,17 @@ export default function MedicalRecordList() {
         <Text style={styles.headerTitle}>Health Record</Text>
       </View>
 
-      {diease.map((dieaseItem, index) => (
+      {disease.map((diseaseItem, index) => ( 
         <View key={index}>
           <View style={styles.date}>
             <Text style={styles.dateText}>2024.11.20</Text> {/* 임시 날짜 */}
           </View>
           <View style={styles.list}>
             <TouchableOpacity
-              onPress={() => handleNavigate(dieaseItem)}  
+              onPress={() => handleNavigate(diseaseItem)}  
               style={styles.listItem}
             >
-              <Text style={styles.listText}>{dieaseItem}</Text>
+              <Text style={styles.listText}>{diseaseItem}</Text>
               <Ionicons name="chevron-forward" size={20} color="black" />
             </TouchableOpacity>
           </View>
