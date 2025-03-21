@@ -13,7 +13,7 @@ export default function MedicalRecordList() {
   };
 
   const handleNewPress = () => {
-    router.push('/(tabs)/records/healthStatusRecordListEdit1'); 
+    router.push('/(tabs)/records/healthStatusRecordEdit'); 
   };
 
   return (
