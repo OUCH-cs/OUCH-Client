@@ -1,52 +1,32 @@
 // healthstatus 컴포넌트화
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-export default function healthStatusList() {
+const healthData = [
+    { title: "Disease", value: "diabetes, colic" },
+    { title: "Allergy", value: "pollen, shellfish, peach" },
+    { title: "Blood pressure", value: "138 / 75", unit: "mmHg" },
+    { title: "Blood sugar", value: "90 / 164", unit: "mg/dL" },
+    { title: "Medicine History", value: "dermatological" },
+  ];
+  
+  export default function HealthStatusList() {
     return (
-        <React.Fragment>
-    <View style={styles.date}>
-        <Text style={styles.dateText}>Disease</Text>
-    </View>
-
-    <View style={styles.list}>
-        <Text style={styles.listText}>diabetes, colic</Text>
-    </View>
-
-    <View style={styles.date}>
-        <Text style={styles.dateText}>Allergy</Text>
-    </View>
-
-    <View style={styles.list}>
-        <Text style={styles.listText}>pollen, sellfish, peach</Text>
-    </View>
-
-    <View style={styles.date}>
-        <Text style={styles.dateText}>Blood pressure</Text>
-    </View>
-
-    <View style={styles.list}>
-        <Text style={styles.listText}>138 / 75 <Text style={styles.smallText}>mmHg</Text></Text>
-    </View>
-
-    <View style={styles.date}>
-        <Text style={styles.dateText}>Blood sugar</Text>
-    </View>
-
-    <View style={styles.list}>
-        <Text style={styles.listText}>90 / 164 <Text style={styles.smallText}>mg/dL</Text></Text>
-    </View>
-
-    <View style={styles.date}>
-        <Text style={styles.dateText}>Medicine History</Text>
-    </View>
-
-    <View style={styles.list}>
-        <Text style={styles.listText}>dermatological</Text>
-    </View>
-    </React.Fragment>
-        );
-    }
-
+      <>
+        {healthData.map((item, index) => (
+          <View key={index}>
+            <View style={styles.date}>
+              <Text style={styles.dateText}>{item.title}</Text>
+            </View>
+            <View style={styles.list}>
+              <Text style={styles.listText}>
+                {item.value} {item.unit && <Text style={styles.smallText}>{item.unit}</Text>}
+              </Text>
+            </View>
+          </View>
+        ))}
+      </>
+    );
+  }
     const styles = StyleSheet.create({
         date: {
             marginTop: 32,
