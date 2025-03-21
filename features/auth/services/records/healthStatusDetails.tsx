@@ -2,25 +2,32 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+const HealthStatusDetail = [
+  { title: "Diease", value: "asdfasdfasd" },
+  { title: "Allergy", value: "asdfasdfasd" },
+  { title: "Blood Pressure", value: "asdfasdfasd" },
+];
 
 export default function HealthStatusDetails() {
   return (
     <React.Fragment>
-    <View style={styles.recordItemBottom}>
-              <Text style={styles.labelBottom}>Disease</Text>
-              <Text style={styles.valueBottom}>asdfasdfasd</Text>
-            </View>
-            <View style={styles.recordItemBottom}>
-              <Text style={styles.labelBottom}>Allergy</Text>
-              <Text style={styles.valueBottom}>asdfasdfasd</Text>
-            </View>
-            <View style={styles.cornerRadiusBotttom}>
-              <Text style={styles.labelBottom}>Blood pressure</Text>
-              <Text style={styles.valueBottom}>asdfasdfasd</Text>
-            </View>
-            </React.Fragment>
+      {HealthStatusDetail.map((item, index) => (
+        <View
+          key={index}
+          style={[
+            styles.recordItemBottom,,
+            index === HealthStatusDetail.length - 1 && styles.cornerRadiusBottom,
+          ]}
+        >
+          <Text style={styles.labelBottom}>{item.title}</Text>
+          <Text style={styles.valueBottom}>{item.value}</Text>
+        </View>
+      ))}
+    </React.Fragment>
   );
 }
+
+
 const styles = StyleSheet.create({
     recordItemBottom: {
         backgroundColor:"#FFFFFF",
