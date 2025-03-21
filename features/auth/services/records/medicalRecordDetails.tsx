@@ -17,12 +17,12 @@ export default function MedicalRecordDetails() {
         <View
           key={index}
           style={[
-            styles.recordItem,
-            index === medicalDetail.length - 1 && styles.cornerRadiusBottom,
+            styles.recordItemTop,
+            index === medicalDetail.length - 1 && styles.cornerRadiusTop,
           ]}
         >
-          <Text style={styles.label}>{item.title}</Text>
-          <Text style={styles.value}>{item.value}</Text>
+          <Text style={styles.labelTop}>{item.title}</Text>
+          <Text style={styles.valueTop}>{item.value}</Text>
         </View>
       ))}
     </React.Fragment>
