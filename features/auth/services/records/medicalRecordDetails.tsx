@@ -2,30 +2,29 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+const medicalDetail = [
+  { title: "Date of visit", value: "2024.11.24" },
+  { title: "Visiting Hospital", value: "Hanyang Hospital" },
+  { title: "Medical Subjects", value: "sgdggsdgfg" },
+  { title: "Symptoms", value: "sgdfgsdgfg" },
+  { title: "Treatment Summary", value: "Hanyang Hospital" },
+];
 
 export default function MedicalRecordDetails() {
   return (
     <React.Fragment>
-      <View style={styles.recordItemTop}>
-        <Text style={styles.labelTop}>Date of visit</Text>
-        <Text style={styles.valueTop}>2024.11.24</Text>
-      </View>
-      <View style={styles.recordItemTop}>
-        <Text style={styles.labelTop}>Visiting Hospital</Text>
-        <Text style={styles.valueTop}>Hanyang Hospital</Text>
-      </View>
-      <View style={styles.recordItemTop}>
-        <Text style={styles.labelTop}>Medical Subjects</Text>
-        <Text style={styles.valueTop}>sgdfgsdgfg</Text>
-      </View>
-      <View style={styles.recordItemTop}>
-        <Text style={styles.labelTop}>Symptoms</Text>
-        <Text style={styles.valueTop}>sgdfgsdgfg</Text>
-      </View>
-      <View style={styles.cornerRadiusTop}>
-        <Text style={styles.labelTop}>Treatment Summary</Text>
-        <Text style={styles.valueTop}>asdfasdfasasdfasdfasdfasf</Text>
-      </View>
+      {medicalDetail.map((item, index) => (
+        <View
+          key={index}
+          style={[
+            styles.recordItem,
+            index === medicalDetail.length - 1 && styles.cornerRadiusBottom,
+          ]}
+        >
+          <Text style={styles.label}>{item.title}</Text>
+          <Text style={styles.value}>{item.value}</Text>
+        </View>
+      ))}
     </React.Fragment>
   );
 }
