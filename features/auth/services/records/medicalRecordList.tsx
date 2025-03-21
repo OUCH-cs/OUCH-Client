@@ -1,52 +1,30 @@
 // medicalListRecord 컴포넌트화
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-export default function medicalRecordList() {
+const medicalData = [
+    { title: "Date of visit", value: "2024.11.24" },
+    { title: "Visiting Hospital", value: "Hanyang Hospital" },
+    { title: "Medical Subjects", value: "Hanyang Hospital" },
+    { title: "Symptoms", value: "Hanyang Hospital" },
+    { title: "Treatment Summary", value: "Hanyang Hospital" },
+];
+
+export default function MedicalRecordList() {
     return (
-        <React.Fragment>
-        <View style={styles.date}>
-            <Text style={styles.dateText}>Date of visit</Text>
-        </View>
-
-        <View style={styles.list}>
-            <Text style={styles.listText}>2024.11.24</Text>
-        </View>
-
-        <View style={styles.date}>
-            <Text style={styles.dateText}>Visiting Hospital</Text>
-        </View>
-
-        <View style={styles.list}>
-            <Text style={styles.listText}>Hanyang Hospital</Text>
-        </View>
-
-        <View style={styles.date}>
-            <Text style={styles.dateText}>Medical Subjects</Text>
-        </View>
-
-        <View style={styles.list}>
-            <Text style={styles.listText}>Hanyang Hospital</Text>
-        </View>
-
-        <View style={styles.date}>
-            <Text style={styles.dateText}>Symptoms</Text>
-        </View>
-
-        <View style={styles.list}>
-            <Text style={styles.listText}>Hanyang Hospital</Text>
-        </View>
-
-        <View style={styles.date}>
-            <Text style={styles.dateText}>Treatment Summary</Text>
-        </View>
-
-        <View style={styles.list}>
-            <Text style={styles.listText}>Hanyang Hospital</Text>
-        </View>
-        </React.Fragment>
+        <>
+            {medicalData.map((item, index) => (
+                <View key={index}>
+                    <View style={styles.date}>
+                        <Text style={styles.dateText}>{item.title}</Text>
+                    </View>
+                    <View style={styles.list}>
+                        <Text style={styles.listText}>{item.value}</Text>
+                    </View>
+                </View>
+            ))}
+        </>
     );
 }
-
 const styles = StyleSheet.create({
     date: {
         marginTop: 32,
